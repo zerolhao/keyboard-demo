@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>我的快捷键</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header></header>
+  <main>
+    <div id="keyboard"></div>
+  </main>
+  <footer></footer>
+
+  <script>
+    var key = [
+    ['q','w','e','r','t','y','u','i','o','p'],
+    ['a','s','d','f','g','h','j','k','l'],
+    ['z','x','c','v','b','n','m']
+    ]
+    var hash = {
+      q: 'qq.com',
+      w: 'weibo.com',
+      e: 'earth.google.com',
+      r: 'runoob.com',
+      t: 'twitter.com',
+      y: 'youtube.com',
+      u: undefined,
+      i: 'iconfont.com',
+      o: 'outlook.live.com',
+      p: 'pixiv.net',
+      a: 'amazon.com'
+    }
+    // 取出 localStorage 中的 zzz 对应的 hash
+    var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
+    if(hashInLocalStorage){
+      hash = hashInLocalStorage
+    }
+
+    for(var i=0; i<key.length; i++){
+      div = document.createElement("div")  // 创建div标签
+      keyboard.appendChild(div)  // 将div标签添加到id为keyborad的标签的内部
+      row = key[i]   // 将第i个数组赋值给row，第i行...
+      for(var j=0; j<row.length; j++){
+        kbd = document.createElement("kbd")  // 创建kbd标签
+        kbd.textContent = row[j]  // 添加内容
+        div.appendChild(kbd)  // 将kbd标签添加到div内
+        // 创建编辑按钮
+        btnEdit = document.createElement('button')
+        btnEdit.textContent = "E"
+        btnEdit.id = row[j]  // 添加id
+        kbd.appendChild(btnEdit)
+        btnEdit.onclick = function(luanda){
+          //var key = this.id  // 获得id，获得当前按键标识
+          var key = luanda.target.id
+          var text = prompt("给我一个网址")  // 获得新网址
+          hash[key] = text  // hash 变更
+          // 只要hash变了，就把hash存到uuu里面
+          localStorage.setItem('zzz', JSON.stringify(hash))
+        }
+      }
+    }
+
+    document.onkeypress = function(zxvcjklfrs){
+      checkKey = zxvcjklfrs.key  // 获得你按下的键
+      domain = hash[checkKey]  // 获得对应网址
+      //location.href = 'http://' + domain  //在当前页打开
+      window.open('http://' + domain)   // 在新的标签页打开
+    }
+  </script>
+</body>
+</html>

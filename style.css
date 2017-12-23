@@ -2,20 +2,32 @@
   margin:0;
   padding: 0;
 }
+body{
+  background: #bbbbbb url(wall.jpg) center center no-repeat;
+  background-size: cover;
+}
 main{
   text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #keyboard{
   display: inline-block;
+  padding: 50px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
 }
 #keyboard>div.row{
   margin: 14px 0;
+  text-align: left;
 }
 #keyboard>div:nth-child(2){
-  margin-left: 2em;
+  margin-left: 22px;
 }
 #keyboard>div:nth-child(3){
-  margin-left: 4em;
+  margin-left: 44px;
 }
 #keyboard kbd{
   display: inline-block;

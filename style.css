@@ -20,10 +20,14 @@ main{
   height: 4em;
   border: 1px solid #f60;
   text-transform: uppercase;
-  position: 1relative;
+  position: relative;
 }
 #keyboard kbd>button{
   position: absolute;
   right: 0;
   bottom: 0;
+  display: none;
+}
+#keyboard kbd:hover>button{
+  display: block;
 }
